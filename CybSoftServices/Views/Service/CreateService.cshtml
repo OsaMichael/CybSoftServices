@@ -1,0 +1,133 @@
+﻿@model CybSoftServices.Models.ServiceModel
+
+@{
+    ViewBag.Title = "CreateService";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 ></h1>
+<h1></h1>
+<h1></h1>
+<div class="card-body" id="bar-parent">
+    <form action="CreateService" method="Post" id="form_sample_1" class="form-horizontal" novalidate="novalidate">
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <div class="form-body">
+
+            <div class="form-group row">
+                <label class="control-label col-md-3">
+                    Item Name
+                </label>
+
+                <div class="col-md-12">
+                    @*@Html.TextBoxFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "enter new item" } })*@
+                    @Html.TextBoxFor(model => model.Name,  new { @class = "form-control", @placeholder = "enter new item" } )
+   
+                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                    @*@Html.TextBox("CustomarName", null, new { @class = "form-control", @placeholder = "Search With Customar Name" })*@
+                    @*@Html.TextBoxFor(m => m.Listing.Location.AddressLine1, new { @placeholder = "Address Line 1 - Required" })*@
+                </div>
+       
+
+            </div>
+
+                <div class="form-group row">
+                    <label class="control-label col-md-3">
+                        Description
+                        @*<span class="required" aria-required="true"> * </span>*@
+                    </label>
+                    <div class="col-md-12">
+                        @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-3">
+                        Expire Date
+                        @*<span class="required" aria-required="true"> * </span>*@
+                    </label>
+                    <div class="col-md-12">
+                        <input type="date" name="ExpiredDate" class="form-control" value="mm/dd/yyyy" />                  
+                        @Html.ValidationMessageFor(m => m.ExpiredDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            <div class="form-group row">
+                <label class="control-label col-md-3">
+                    Renewer Type
+                    @*<span class="required" aria-required="true"> * </span>*@
+                </label>
+                <div class="col-md-12">
+                    <select id="renewerType" name="renewerType"  class="form-control">
+                        <option value="">Select</option>
+                        <option value="Yearly">Yearly</option>
+                        <option value="Monthly">Monthly</option>
+                        <option value="Weekly">Weekly</option>
+                    </select>
+                </div>
+            </div>
+          
+                <div class="form-group row">
+                    <label class="control-label col-md-3">
+                        Email
+                        @*<span class="required" aria-required="true"> * </span>*@
+                    </label>
+                    <div class="col-md-12">
+                        <input name="Email" type="text" class="form-control" placeholder="enter notification email"/>
+                        @*@Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "enter notification email" })*@
+                        @*@Html.TextBoxFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            <div class="form-group row">
+                <label class="control-label col-md-3">
+                   CountDown Date 
+                </label>
+
+                <div class="col-md-12">
+                    <input type="number" name="CountDown" class="form-control"  placeholder="enter expiring date (e.g 3)"} />
+                    @Html.ValidationMessageFor(m => m.CountDown, "", new { @class = "text-danger" })
+                
+                </div>
+            </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-3">
+                        Alert Expired
+                        @*<span class="required" aria-required="true"> * </span>*@
+                    </label>
+                    <div class="col-md-12">
+                        <select id="alertExpired" name="AlertExpired"  class="form-control">
+                            <option value="">Select</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <div class="row">
+                        <div class="offset-md-3 col-md-6 pull-right">
+                            <button type="submit" class="btn btn-info" id="submitData">Save</button>
+                            @*<button type="button" class="btn btn-danger">Cancel</button>*@
+
+                        </div>
+                        <div class="col-md-1">
+                            <a href="@Url.Action("Index","Service", new { area = ""})" class="btn btn-chatpane">Back To List(s)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+    </form>
+</div>
+
+
+@section Script{
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.0.0.js"></script>
+    <script src="~/Scripts/toastr.js"></script>
+
+    <script type="text/javascript">toastr.success("@(TempData["Message"] as string)");</script>
+}
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@
