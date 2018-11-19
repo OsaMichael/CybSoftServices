@@ -21,6 +21,7 @@ namespace CybSoftServices.Models
         public string RenewerType { get; set; }
         //  public int CountDown { get; set; }
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
         [Required]
         public int CountDown { get; set; }

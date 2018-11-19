@@ -23,7 +23,7 @@
             <th> CountDown date </th>   
             <th> Alert Expired </th>       
              <th> Date Created </th>
-             <th class="mx-5"> Action </th>      
+             <th> Action </th>      
         </tr>
     </thead>
     <tbody>
@@ -56,6 +56,10 @@
         }
     </tbody>
 </table>
+<p>
+    @Html.ActionLink("Export to Excel", "Export", "Service", new { @class = "btn btn-primary" })
+</p>
+
 @section Script{
     <link href="~/Content/toastr.css" rel="stylesheet" />
     <script src="~/Scripts/bootstrap.min.js"></script>
