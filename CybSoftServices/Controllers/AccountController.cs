@@ -20,15 +20,15 @@ namespace CybSoftServices.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private RoleManager<IdentityRole> _roleMgr;
-        public AccountController()
-        {
-        }
+        //public AccountController()
+        //{
+        //}
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
-        }
+        //public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        //{
+        //    UserManager = userManager;
+        //    SignInManager = signInManager;
+        //}
         IAuthenticationManager _auth => HttpContext.GetOwinContext().Authentication;
 
         public ApplicationSignInManager SignInManager
@@ -112,7 +112,7 @@ namespace CybSoftServices.Controllers
 
                     //if (role == "Admin")
                     //{
-                        //return RedirectToAction("Index", "Home");
+                    //return RedirectToAction("Index", "Home");
                     //}
 
                     return RedirectToLocal(returnUrl);

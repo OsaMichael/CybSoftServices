@@ -10,9 +10,10 @@ namespace CybSoftServices.Entities
     {
         [Key]
         public int ServId { get; set; }
+        public string UserId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public DateTime ExpiredDate { get; set; } = DateTime.Now;
+        public DateTime ExpiredDate { get; set; }
         public string RenewerType { get; set; }
       //  public int CountDown { get; set; }
         public int CountDown { get; set; }

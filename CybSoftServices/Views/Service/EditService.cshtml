@@ -45,7 +45,8 @@
                 </label>
                 <div class="col-md-12">
                     @*<input type="date" name="ExpiredDate" class="form-control" value="mm/dd/yyyy" />*@
-                    @Html.TextBoxFor(model => model.ExpiredDate, new { @class = "form-control", @placeholder = "enter new item" })
+                    @Html.TextBoxFor(model => model.ExpiredDate, new { @class = "form-control", @placeholder = "enter new date
+                   " })
                     @*@Html.@String.Format("{0:d}", model.ExpiredDate)*@
                     @Html.ValidationMessageFor(m => m.ExpiredDate, "", new { @class = "text-danger" })
                 </div>

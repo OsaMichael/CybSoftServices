@@ -7,6 +7,7 @@
     <title>@ViewBag.Title - CybSoftServices</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
@@ -30,6 +31,7 @@
                     @*@if (User.IsInRole("Admin"))
                     {*@
                         <li>@Html.ActionLink("Services", "index", "Service")</li>
+                    <li>@Html.ActionLink("Upload Services", "UploadServices", "Service")</li>
                         @*<li>@Html.ActionLink("Upload Staffs", "UploadVoters", "Voter")</li>
                         <li>@Html.ActionLink("Restaurants", "index", "Restaurant")</li>
                         <li>@Html.ActionLink("Rating", "index", "Rating")</li>

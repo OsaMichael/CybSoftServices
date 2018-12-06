@@ -8,7 +8,7 @@
 <h1 ></h1>
 <h1></h1>
 <h1></h1>
-<div class="card-body" id="bar-parent">
+<div  class="card-body" id="bar-parent">
     <form action="CreateService" method="Post" id="form_sample_1" class="form-horizontal" novalidate="novalidate">
         @Html.ValidationSummary(false, "", new { @class = "text-danger" })
         <div class="form-body">
@@ -46,7 +46,7 @@
                         @*<span class="required" aria-required="true"> * </span>*@
                     </label>
                     <div class="col-md-12">
-                        <input type="date" name="ExpiredDate" class="form-control" value="mm/dd/yyyy" />                  
+                        <input type="date" name="ExpiredDate" class="form-control" value="dd/MM/yyyy" />                  
                         @Html.ValidationMessageFor(m => m.ExpiredDate, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                 
                 </div>
             </div>
-                <div class="form-group row">
+                <div class="form-group row" id="radioButtonDiv">
                     <label class="control-label col-md-3">
                         Alert Expired
                         @*<span class="required" aria-required="true"> * </span>*@
@@ -97,8 +97,8 @@
                     <div class="col-md-12">
                         <select id="alertExpired" name="AlertExpired"  class="form-control">
                             <option value="">Select</option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
                         </select>
                     </div>
                 </div>
@@ -125,9 +125,28 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery-3.0.0.js"></script>
     <script src="~/Scripts/toastr.js"></script>
-
+    <script src="~/Scripts/angular.js"></script>
     <script type="text/javascript">toastr.success("@(TempData["Message"] as string)");</script>
 }
 @*@section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }*@
+
+@*<script>
+    $('#alertExpired').click(function () {
+
+        if ($('#AlertExpired').is(':checked')) {
+            
+            var actionURL = '@Url.Action("CreateService", "Service")'; // Here I post my data to action method. if I select Yes in the confirm.
+            $.ajax({
+                type: "POST",
+
+            }
+//if I select No I will go to below.
+        //var CourseName = $('#txtProgramName').val();
+        //    var CourseNbr = $('#txtCourseNbr').val();
+        //    var fipStartValue = $('#txtFipStartValue').val();
+        //}
+    
+</script>*@
+

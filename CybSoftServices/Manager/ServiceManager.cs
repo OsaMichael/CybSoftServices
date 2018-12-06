@@ -1,7 +1,10 @@
-﻿using CybSoftServices.Interface;
+﻿using CybSoftServices.Entities;
+using CybSoftServices.Interface;
+using CybSoftServices.Interface.Utils;
 using CybSoftServices.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,10 +14,11 @@ namespace CybSoftServices.Manager
     public class ServiceManager : IServiceManager
     {
         private ApplicationDbContext _context;
-
-        public ServiceManager(ApplicationDbContext context)
+        private IExcelProcessor _excel;
+        public ServiceManager(ApplicationDbContext context, IExcelProcessor excel)
         {
             _context = context;
+            _excel = excel;
         }
         public Operation<ServiceModel> CreateService(ServiceModel model)
         {
@@ -27,14 +31,6 @@ namespace CybSoftServices.Manager
                     var entity = model.Create(model);
                     _context.Services.Add(entity);
                 _context.SaveChanges();
-
-                //}
-                //catch (Exception xe)
-                //{
-                //    throw xe;
-                //}
-                //model.Validate();
-
                 return model;
 
 
@@ -52,12 +48,12 @@ namespace CybSoftServices.Manager
                    
                       Name = c.Name,
                        Description = c.Description,
-                        AlertExpired = c.AlertExpired,
+                       AlertExpired = c.AlertExpired,
                         // CountDown = c.CountDown,
                           Email = c.Email,
                            CountDown = c.CountDown,
                           //get the date as inputed by the user
-                           ExpiredDate = c.ExpiredDate,
+                           ExpiredDate = c.ExpiredDate.ToString(),
                             RenewerType = c.RenewerType,
                              CreatedBy = c.CreatedBy,
                               CreatedDate = DateTime.Now,
@@ -102,5 +98,51 @@ namespace CybSoftServices.Manager
                 _context.SaveChanges();
             });
         }
+
+        public Operation<List<ServiceModel>> UploadServiceNames(Stream stream, ServiceModel model)
+        {
+            return Operation.Create(() =>
+            {
+                var sheet = _excel.Load<ServiceModel>(stream);
+                var errors = new List<ServiceModel>();
+                foreach (var row in sheet)
+                {
+                    // note: I check if staffNo exist in the database, if null, add the data and save it. if yes, edit the data and save it.
+                    var service = _context.Services.Where(v => v.Name == row.Name && v.Description == row.Description && v.RenewerType == row.RenewerType && v.Email == row.Email && v.CountDown == row.CountDown && v.AlertExpired == row.AlertExpired).FirstOrDefault();
+                    row.CreatedBy = model.CreatedBy;
+                    row.ModifiedBy = model.ModifiedBy;
+                    row.CreatedDate = DateTime.Now;
+
+                    if (service != null) throw new Exception("Name already exist");
+                    //{
+
+                    if (row.Name == null || row.Description == null || row.ExpiredDate == null || row.RenewerType == null || row.Email == null || row.CountDown == null || row.AlertExpired == null)
+                    {
+                        throw new Exception("An Empty cell in the file");
+                    }
+                    string date = row.ExpiredDate;
+                    var voterEntity = new Service
+                    {
+                        CreatedBy = row.CreatedBy,
+                        ModifiedBy = row.ModifiedBy,
+                        CreatedDate = DateTime.Now,
+
+                        Name = row.Name,
+                        Description = row.Description,
+                        ExpiredDate = DateTime.ParseExact(date, "dd/MM/yyyy", null),
+                        RenewerType = row.RenewerType,
+                        Email = row.Email,
+                        CountDown = row.CountDown,
+                        AlertExpired = row.AlertExpired,
+                        //ModifiedDate  = DateTime.Now
+                    };
+                    _context.Services.Add(voterEntity);
+                   
+                }
+                _context.SaveChanges();
+                return errors;
+            });
+        }
+
     }
 }

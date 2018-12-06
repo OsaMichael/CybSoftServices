@@ -98,3 +98,11 @@ C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftSe
 C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\obj\Debug\CybSoftServices.pdb
 C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\bin\EPPlus.dll
 C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\bin\EPPlus.xml
+C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\bin\DocumentFormat.OpenXml.dll
+C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\bin\nVisionIT.ExcelProcessor.dll
+C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\obj\Debug\CybSoftServices.Migrations.addtoupdate.resources
+C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\obj\Debug\CybSoftServices.Migrations.aadddd.resources
+C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\obj\Debug\CybSoftServices.Migrations.aadddddddd.resources
+C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\obj\Debug\CybSoftServices.Migrations.aadddddddddeee.resources
+C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\obj\Debug\CybSoftServices.Migrations.sssss.resources
+C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\obj\Debug\CybSoftServices.Migrations.aadddddddddeee1.resources

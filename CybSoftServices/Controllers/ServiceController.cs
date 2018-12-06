@@ -1,4 +1,5 @@
 ﻿using CybSoftServices.Interface;
+using CybSoftServices.Interface.Utils;
 using CybSoftServices.Models;
 using Microsoft.AspNet.Identity;
 using OfficeOpenXml;
@@ -14,9 +15,11 @@ namespace CybSoftServices.Controllers
     public class ServiceController : Controller
     {
         private IServiceManager _servMgr;
-        public ServiceController(IServiceManager servMgr)
+        private IExcelProcessor _excel;
+        public ServiceController(IServiceManager servMgr, IExcelProcessor excel)
         {
             _servMgr = servMgr;
+            _excel = excel;
         }
 
         // GET: Service
@@ -30,12 +33,13 @@ namespace CybSoftServices.Controllers
             if (results.Succeeded)
             {
                 return View(results.Unwrap());
+                //return View(results.Unwrap());
             }
 
             else
             {
                 ModelState.AddModelError(string.Empty, "An error occure");
-                return View();
+               return Json(new { status = false, error = "Invalid Id" }, JsonRequestBehavior.AllowGet);
             }
         }
         [HttpGet]
@@ -129,7 +133,7 @@ namespace CybSoftServices.Controllers
             foreach (var item in list)
             {
                 //converting expireddate format to string 
-                var stringDate = item.ExpiredDate.ToString("dd/MM/yyyy");
+                var stringDate = item.ExpiredDate;
 
                 ws.Cells[string.Format("A{0}", rowStart)].Value = item.ServId;
                 ws.Cells[string.Format("B{0}", rowStart)].Value = item.Name;
@@ -170,5 +174,65 @@ namespace CybSoftServices.Controllers
 
             return Json(new { status = false, error = "Invalid Id" }, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public ActionResult UploadServices()
+        {
+            DropDown();
+            var model = new ServiceModel();
+            return View(model);
+        }
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult UploadServices(HttpPostedFileBase file, ServiceModel model)
+        {
+            DropDown();
+            try
+            {
+                if (file != null && file.ContentLength != 0 && (System.IO.Path.GetExtension(file.FileName).ToLower() == ".xlsx" || System.IO.Path.GetExtension(file.FileName).ToLower() == ".xls"))
+                {
+                    model.CreatedBy = User.Identity.GetUserName();
+                    model.ModifiedBy = User.Identity.GetUserName();
+                    var uploadedResult = _servMgr.UploadServiceNames(file.InputStream, model);
+                    if (uploadedResult.Succeeded == true)
+                    {
+
+                        TempData["message"] = $"  successfully Uploaded!";
+                        return RedirectToAction("Index");
+                    }
+
+                    //else
+                    //{
+                    //    ModelState.AddModelError(string.Empty, uploadedResult.Message);
+                    //    ViewBag.Error = $"Error occured : {uploadedResult.Message}";
+                    //    return View(model);
+                    //}
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+            }
+
+            //else
+            //{
+            //    ViewBag.Error = "Only Excel Sheets are allowed";
+            //}
+            //}
+            return View();
+        }
+        private void DropDown()
+        {
+            ViewBag.voters = new SelectList(_servMgr.GetServices().Result, "ServId", "Name");
+        }
+
+        public ActionResult DownloadServiceTemplate()
+        {
+            //return Redirect("~/DataUploadTemplates/VoterNamesample.xls");
+            return Redirect("~/DataUploadTemplates/ServiceNamesample.xlsx");
+
+        }
+
     }
 }

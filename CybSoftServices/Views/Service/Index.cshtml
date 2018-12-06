@@ -34,13 +34,16 @@
                 <td>@Html.DisplayFor(modelItem => item.Name)</td>
                 <td>@Html.DisplayFor(modelItem => item.Description)</td>
                 <td>@String.Format("{0:d}", item.ExpiredDate)</td>
-                @*<td>@Html.DisplayFor(modelItem => item.ExpiredDate)</td>*@
-                <td>@Html.DisplayFor(modelItem => item.RenewerType)</td>
-                @*<td>@Html.DisplayFor(modelItem => item.CountDown)</td>*@
+                <td>@Html.DisplayFor(modelItem => item.RenewerType)</td>            
                 <td>@Html.DisplayFor(modelItem => item.Email)</td>
                 <td>@Html.DisplayFor(modelItem => item.CountDown)</td>
-                <td>@Html.DisplayFor(modelItem => item.AlertExpired)</td>          
-                    <td>@String.Format("{0:d}", item.CreatedDate)</td>
+
+                <td>@if (item.AlertExpired == 1)
+                { Html.Display("Yes"); }
+                else
+                { Html.Display("No");  }
+                </td>          
+                <td>@String.Format("{0:d}", item.CreatedDate)</td>
           
                     <td>
                         <a href="/Service/EditService?id=@item.ServId" class="btn btn-primary btn-xs">
@@ -65,7 +68,7 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery-3.0.0.js"></script>
     <script src="~/Scripts/toastr.js"></script>
-
+     <script src="~/Scripts/angular.js"></script>
     <script>
     $(function () {
 
