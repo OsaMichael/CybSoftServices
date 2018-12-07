@@ -38,11 +38,7 @@
                 <td>@Html.DisplayFor(modelItem => item.Email)</td>
                 <td>@Html.DisplayFor(modelItem => item.CountDown)</td>
 
-                <td>@if (item.AlertExpired == 1)
-                { Html.Display("Yes"); }
-                else
-                { Html.Display("No");  }
-                </td>          
+                <td>@(item.AlertExpired.ToString() == "1" ? "Yes" : "NO")</td>          
                 <td>@String.Format("{0:d}", item.CreatedDate)</td>
           
                     <td>
