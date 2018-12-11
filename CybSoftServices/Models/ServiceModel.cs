@@ -13,20 +13,22 @@ namespace CybSoftServices.Models
         public int ServId { get; set; }
         public string UserId { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string ServerDescription { get; set; }
         [Required]
-        public string Description { get; set; }
+        public string Services { get; set; }
         [Required]
-        public string ExpiredDate { get; set; }
+        public string ExpiringDate { get; set; }
         public string RenewerType { get; set; }
         //  public int CountDown { get; set; }
-        [Required]
-        [EmailAddress]
+        //[Required]
+        //[EmailAddress]
         public string Email { get; set; }
-        [Required]
+        //[Required]
         public int CountDown { get; set; }
-        [Required]
+        //[Required]
         public int AlertExpired { get; set; }
+        [Required]
+        public string Access_Details { get; set; }
         public string Message { get; set; }
         public string CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
@@ -51,14 +53,16 @@ namespace CybSoftServices.Models
             {
                 UserId = model.UserId,
 
-                Name = model.Name,
-                Description = model.Description,
+                ServerDescription = model.ServerDescription,
+                 Access_Details =model.Access_Details,
+                Services = model.Services,
                 RenewerType = model.RenewerType,
                AlertExpired = model.AlertExpired,
                 CountDown = model.CountDown,
                 Email = model.Email,
                 //get the date as inputed by the user
-                ExpiredDate = DateTime.Parse(model.ExpiredDate),
+                ExpiringDate = model.ExpiringDate,
+                //ExpiringDate = model.ExpiringDate,
                 //ExpiredDate = DateTime.AddDays(Duration),
                 CreatedBy = model.CreatedBy,
                 CreatedDate = DateTime.Now,
@@ -71,13 +75,15 @@ namespace CybSoftServices.Models
         {
             entity.UserId = model.UserId;
             entity.ServId = model.ServId;
-            entity.Name = model.Name;
-            entity.Description = model.Description;
+            entity.ServerDescription = model.ServerDescription;
+            entity.Access_Details = model.Access_Details;
+            entity.Services = model.Services;
             entity.RenewerType = model.RenewerType;
            entity.AlertExpired = model.AlertExpired;
             entity.Email = model.Email;
             entity.CountDown = model.CountDown;
-            entity.ExpiredDate = DateTime.Parse(model.ExpiredDate);
+            entity.ExpiringDate = model.ExpiringDate;
+           // entity.ExpiringDate = model.ExpiringDate;
             //entity.ExpiredDate = DateTime.Now.AddDays(Duration);
             entity.ModifiedBy = model.ModifiedBy;
             //entity.CreatedBy = model.CreatedBy;

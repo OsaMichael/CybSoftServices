@@ -11,14 +11,17 @@ namespace CybSoftServices.Entities
         [Key]
         public int ServId { get; set; }
         public string UserId { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public DateTime ExpiredDate { get; set; }
+        public string ServerDescription { get; set; }
+        //[Required]
+        public string Services { get; set; }
+        //[Required]
+        public string ExpiringDate { get; set; }
         public string RenewerType { get; set; }
       //  public int CountDown { get; set; }
         public int CountDown { get; set; }
         public string Email { get; set; }
         public int AlertExpired { get; set; }
+        public string Access_Details { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public string ModifiedBy { get; set; }

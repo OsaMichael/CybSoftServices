@@ -46,13 +46,74 @@ namespace CybSoftServices.Manager
                     }
                     row.CreatedBy = model.CreatedBy;
                     row.ModifiedBy = model.ModifiedBy;
-                    row.Name = model.Name;
-                    row.Description = model.Description;
+                    row.ServerDescription = model.ServerDescription;
+                    row.Services = model.Services;
                     row.Email = model.Email;
-                    row.ExpiredDate = row.ExpiredDate /*== staffNm.StaffName ? row.StaffName : staffNm.StaffName*/;
+                    row.ExpiringDate = row.ExpiringDate /*== staffNm.StaffName ? row.StaffName : staffNm.StaffName*/;
                     row.RenewerType = row.RenewerType;
-                    row.CountDown = row.CountDown  /*== staffNm.StaffNo ? row.StaffNo : staffNm.StaffNo*/;
+                    row.CountDown = row.CountDown;
+                    row.Access_Details = row.Access_Details/*== staffNm.StaffNo ? row.StaffNo : staffNm.StaffNo*/;
                
+                    if (servNm == null)
+                    {
+                        var entity = row.Create(row);
+                        _db.Add(entity);
+                    }
+                    else
+                    {
+                        var entity = row.Edit(servNm, row);
+                        _db.Update(entity);
+                    }
+                    var result = _db.SaveChanges();
+                    if (result.Succeeded == false)
+                    {
+                        row.Message = result.Message;
+                        errors.Add(row);
+                    }
+                }
+                return errors;
+            }));
+
+
+        }
+        // the below was not used
+        public Operation<List<ServerModel>> UploadServerNames(Stream stream, ServerModel model)
+        {
+            return Operation.Create((Func<List<ServerModel>>)(() =>
+            {
+                var sheet = _excel.Load<ServerModel>(stream);
+                var errors = new List<ServerModel>();
+                foreach (var row in sheet)
+                {
+                    var servNm = _db.Query<Server>().Where(v => v.ServerID == row.ServerID).FirstOrDefault();
+                    // var votername = _votgr.GetVoters().Result.Where(v => v.StaffName == model.StaffName).FirstOrDefault();
+                    if (servNm == null)
+                    {
+                        row.Message = "service does not exist";
+                        errors.Add(row);
+                        continue;
+                    }
+                    else
+                    {
+                        row.Message = "service does not exist";
+                    }
+                    row.CreatedBy = model.CreatedBy;
+                    row.ModifiedBy = model.ModifiedBy;
+                    row.Discription = model.Discription;
+                    row.Services = model.Services;
+                    row.QTY = row.QTY /*== staffNm.StaffName ? row.StaffName : staffNm.StaffName*/;
+                    row.Charge = row.Charge;
+                    row.Total = row.Total;
+                    row.ExpiringDate = row.ExpiringDate;
+                    row.RAM = row.RAM;
+                    row.HardDisk = row.HardDisk;
+                    row.HDD_Used = row.HDD_Used;
+                    row.HDD_Available = row.HDD_Available;
+                    row.Access_Details = row.Access_Details;
+                
+                    /*== staffNm.StaffNo ? row.StaffNo : staffNm.StaffNo*/
+                    ;
+
                     if (servNm == null)
                     {
                         var entity = row.Create(row);

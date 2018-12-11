@@ -22,6 +22,7 @@ namespace CybSoftServices.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Service> Services { get; set; }
+        public DbSet<Server> Servers { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

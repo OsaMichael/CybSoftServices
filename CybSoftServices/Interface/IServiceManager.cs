@@ -9,7 +9,8 @@ namespace CybSoftServices.Interface
 {
     public interface IServiceManager
     {
-        Operation<ServiceModel> CreateService(ServiceModel model);
+        //Operation<ServiceModel> CreateService(ServiceModel model);
+        bool CreateService(ServiceModel model);
         Operation<ServiceModel[]> GetServices();
         Operation<ServiceModel> UpdateService(ServiceModel model);
         Operation<ServiceModel> GetServiceById(int servId);

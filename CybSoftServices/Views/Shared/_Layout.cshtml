@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - CybSoftServices</title>
+    <title>@ViewBag.Title - CybSoft Projects</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/angular")
@@ -22,24 +22,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("CybSoft", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("CybSoft Pojects", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
 
 
-                    @*@if (User.IsInRole("Admin"))
-                    {*@
                         <li>@Html.ActionLink("Services", "index", "Service")</li>
+                        @*<li>@Html.ActionLink("Servers", "index", "Server")</li>*@
                     <li>@Html.ActionLink("Upload Services", "UploadServices", "Service")</li>
-                        @*<li>@Html.ActionLink("Upload Staffs", "UploadVoters", "Voter")</li>
-                        <li>@Html.ActionLink("Restaurants", "index", "Restaurant")</li>
-                        <li>@Html.ActionLink("Rating", "index", "Rating")</li>
-                        <li>@Html.ActionLink("SummaryReport", "index", "SummaryReport")</li>*@
-                        @*<li>@Html.ActionLink("Daily Meal", "index", "Meal")</li>*@
-                    @*}*@
-
-
+      
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

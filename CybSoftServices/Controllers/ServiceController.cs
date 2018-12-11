@@ -3,6 +3,7 @@ using CybSoftServices.Interface.Utils;
 using CybSoftServices.Models;
 using Microsoft.AspNet.Identity;
 using OfficeOpenXml;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace CybSoftServices.Controllers
         }
 
         // GET: Service
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             if (TempData["message"] != null)
             {
@@ -32,7 +33,7 @@ namespace CybSoftServices.Controllers
             var results = _servMgr.GetServices();
             if (results.Succeeded)
             {
-                return View(results.Unwrap());
+                return View(results.Unwrap().ToPagedList(page ?? 1, 20));
                 //return View(results.Unwrap());
             }
 
@@ -51,8 +52,7 @@ namespace CybSoftServices.Controllers
         public ActionResult CreateService(ServiceModel model)
         {
 
-            //var errors = ModelState.Where(x => x.Value.Errors.Count > 0).Select(x => new { x.Key, x.Value.Errors })
-            //    .ToArray();
+            var serviceModel = new Operation<ServiceModel>();
 
             if (ModelState.IsValid)
             {
@@ -60,15 +60,17 @@ namespace CybSoftServices.Controllers
                 {
                     model.CreatedBy = User.Identity.GetUserName();
                     var result = _servMgr.CreateService(model);
-                    if (result.Succeeded == true)
+                    serviceModel.Succeeded = true;
+
+                    if (serviceModel.Succeeded == true)
                     {
-                        TempData["message"] = $"Service{model.Name} was successful added";
+                        TempData["message"] = $"Service{model.ServerDescription} was successful added";
                         return RedirectToAction("Index");
                     }
                 }
                 catch(Exception ex)
                 {
-                    ModelState.AddModelError(string.Empty, ex.Message);
+                    throw ex;
                 }
          
               
@@ -99,7 +101,7 @@ namespace CybSoftServices.Controllers
                 if (result.Succeeded)
                 {
 
-                    TempData["message"] = $"Service{model.Name} was successfully added!";
+                    TempData["message"] = $"Service{model.ServerDescription} was successfully added!";
                     ModelState.AddModelError(string.Empty, "Update was successfully ");
                     return RedirectToAction("Index");
                 }
@@ -121,28 +123,30 @@ namespace CybSoftServices.Controllers
             ExcelWorksheet ws = pck.Workbook.Worksheets.Add("Report");
 
             ws.Cells["A1"].Value = "ServId";
-            ws.Cells["B1"].Value = "Name";
-            ws.Cells["C1"].Value = "Description";
+            ws.Cells["B1"].Value = "ServerDescription";
+            ws.Cells["C1"].Value = "Services";
             ws.Cells["D1"].Value = "ExpiredDate";
             ws.Cells["E1"].Value = "RenewerType";
             ws.Cells["F1"].Value = "Email ";
             ws.Cells["G1"].Value = "CountDown";
             ws.Cells["H1"].Value = "AlertExpired";
+            ws.Cells["I1"].Value = "Access_Details";
 
             int rowStart = 2;
             foreach (var item in list)
             {
                 //converting expireddate format to string 
-                var stringDate = item.ExpiredDate;
+                var stringDate = item.ExpiringDate;
 
                 ws.Cells[string.Format("A{0}", rowStart)].Value = item.ServId;
-                ws.Cells[string.Format("B{0}", rowStart)].Value = item.Name;
-                ws.Cells[string.Format("C{0}", rowStart)].Value = item.Description;
+                ws.Cells[string.Format("B{0}", rowStart)].Value = item.ServerDescription;
+                ws.Cells[string.Format("C{0}", rowStart)].Value = item.Services;
                 ws.Cells[string.Format("D{0}", rowStart)].Value = stringDate;
                 ws.Cells[string.Format("E{0}", rowStart)].Value = item.RenewerType;
                 ws.Cells[string.Format("F{0}", rowStart)].Value = item.Email;
                 ws.Cells[string.Format("G{0}", rowStart)].Value = item.CountDown;
                 ws.Cells[string.Format("H{0}", rowStart)].Value = item.AlertExpired;
+                ws.Cells[string.Format("H{0}", rowStart)].Value = item.Access_Details;
                 rowStart++;
             }
 
@@ -224,7 +228,7 @@ namespace CybSoftServices.Controllers
         }
         private void DropDown()
         {
-            ViewBag.voters = new SelectList(_servMgr.GetServices().Result, "ServId", "Name");
+            ViewBag.voters = new SelectList(_servMgr.GetServices().Result, "ServId", "ServerDescription");
         }
 
         public ActionResult DownloadServiceTemplate()

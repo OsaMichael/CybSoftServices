@@ -1,0 +1,60 @@
+﻿@model CybSoftServices.Models.ServerModel
+
+@{
+    ViewBag.Title = "Upload servers";
+
+}
+
+<div class="page-content-wrapper">
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="card card-box">
+                <div class="card-head">
+                    <header></header>
+                    <button id="panel-button" class="mdl-button mdl-js-button mdl-button--icon pull-right" data-upgraded=",MaterialButton">
+                        @*<i class="material-icons">more_vert</i>*@
+                    </button>
+
+                </div>
+                <div class="card-body" id="bar-parent">
+                    <form action="UploadServers" method="Post" id="form_sample_1" class="form-horizontal" @*novalidate="novalidate"*@ enctype="multipart/form-data">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-body">
+                            @*<div class="form-group row">
+                                   All
+                                    <span class="required" aria-required="true"> * </span>
+                                </div>*@
+
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="offset-md-3 col-md-3">
+                                        <input type="file" accept="application/vnd.ms-excel" name="file" id="file" />
+                                        <button type="submit" class="btn btn-info" id="submitData">Upload</button>
+                                    </div>
+                                    <div class="col-md-1">
+                                        @*<a href="~/DataUploadTemplates/StaffNamesample.xlsx" download="">Download Template</a>*@
+
+                                        @Html.ActionLink("Download Template", "DownloadServerTemplate", "Server")
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*</div>*@
+
+
+@section Script{
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.0.0.js"></script>
+    <script src="~/Scripts/toastr.js"></script>
+
+    <script type="text/javascript">toastr.success("@(TempData["Message"] as string)");</script>
+}

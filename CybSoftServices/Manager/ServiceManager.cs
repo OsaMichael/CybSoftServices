@@ -20,21 +20,20 @@ namespace CybSoftServices.Manager
             _context = context;
             _excel = excel;
         }
-        public Operation<ServiceModel> CreateService(ServiceModel model)
+        public bool CreateService(ServiceModel model)
         {
-            return System.Operation.Create(() =>
-            {
-                //try
-                //{
+            //return System.Operation.Create(() =>
+            //{
+               
                     var isExists = _context.Services.Where(c => c.ServId == model.ServId).FirstOrDefault();
                     if (isExists != null) throw new Exception("user email already exist");
                     var entity = model.Create(model);
                     _context.Services.Add(entity);
                 _context.SaveChanges();
-                return model;
+                return true;
 
 
-            });
+            //});
 
         }
         public Operation<ServiceModel[]> GetServices()
@@ -45,16 +44,17 @@ namespace CybSoftServices.Manager
 
                 var models = entities.Select(c => new ServiceModel(c)
                 {
-                   
-                      Name = c.Name,
-                       Description = c.Description,
+                     //ServId = c.ServId,
+                    ServerDescription = c.ServerDescription,
+                       Services = c.Services,
                        AlertExpired = c.AlertExpired,
-                        // CountDown = c.CountDown,
+                        Access_Details = c.Access_Details,
                           Email = c.Email,
                            CountDown = c.CountDown,
-                          //get the date as inputed by the user
-                           ExpiredDate = c.ExpiredDate.ToString(),
-                            RenewerType = c.RenewerType,
+                    //get the date as inputed by the user
+                    //ExpiringDate = c.ExpiringDate.ToString(),
+                           ExpiringDate = c.ExpiringDate,
+                           RenewerType = c.RenewerType,
                              CreatedBy = c.CreatedBy,
                               CreatedDate = DateTime.Now,
                                ModifiedDate = DateTime.Now
@@ -108,28 +108,30 @@ namespace CybSoftServices.Manager
                 foreach (var row in sheet)
                 {
                     // note: I check if staffNo exist in the database, if null, add the data and save it. if yes, edit the data and save it.
-                    var service = _context.Services.Where(v => v.Name == row.Name && v.Description == row.Description && v.RenewerType == row.RenewerType && v.Email == row.Email && v.CountDown == row.CountDown && v.AlertExpired == row.AlertExpired).FirstOrDefault();
+                    var service = _context.Services.Where(v => v.ServerDescription == row.ServerDescription && v.Services == row.Services && v.Access_Details == row.Access_Details && v.RenewerType == row.RenewerType && v.Email == row.Email && v.CountDown == row.CountDown && v.AlertExpired == row.AlertExpired).FirstOrDefault();
                     row.CreatedBy = model.CreatedBy;
                     row.ModifiedBy = model.ModifiedBy;
                     row.CreatedDate = DateTime.Now;
 
-                    if (service != null) throw new Exception("Name already exist");
-                    //{
+                    ////if (service != null) throw new Exception("Name already exist");
+                    //////{
 
-                    if (row.Name == null || row.Description == null || row.ExpiredDate == null || row.RenewerType == null || row.Email == null || row.CountDown == null || row.AlertExpired == null)
-                    {
-                        throw new Exception("An Empty cell in the file");
-                    }
-                    string date = row.ExpiredDate;
+                    //if (row.ServerDescription == null || row.Services == null || row.Access_Details == null || row.ExpiringDate == null /*|| row.RenewerType == null || row.Email == null || row.CountDown == null || row.AlertExpired == null*/)
+                    //{
+                    //    throw new Exception("An Empty cell in the file");
+                    //}
+                    string date = row.ExpiringDate;
                     var voterEntity = new Service
                     {
                         CreatedBy = row.CreatedBy,
                         ModifiedBy = row.ModifiedBy,
                         CreatedDate = DateTime.Now,
 
-                        Name = row.Name,
-                        Description = row.Description,
-                        ExpiredDate = DateTime.ParseExact(date, "dd/MM/yyyy", null),
+                        ServerDescription = row.ServerDescription,
+                         Access_Details = row.Access_Details,
+                        Services = row.Services,
+                        ExpiringDate = date,
+
                         RenewerType = row.RenewerType,
                         Email = row.Email,
                         CountDown = row.CountDown,

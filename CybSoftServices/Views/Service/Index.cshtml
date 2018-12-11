@@ -1,4 +1,8 @@
-﻿@model IEnumerable<CybSoftServices.Models.ServiceModel>
+﻿
+@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<CybSoftServices.Models.ServiceModel>
 
 @{
     ViewBag.Title = "Index";
@@ -14,14 +18,15 @@
     <thead>
         <tr>
             @*<th> Rest Id </th>*@
-            <th> Item </th>
-            <th> Description </th>
-            <th> Expired Date </th>
+            <th> Server  Description </th>
+            <th> Services </th>
+            <th> Expiring Date </th>
             <th> Renewer Type</th>
             @*<th> CountDown </th>*@
             <th> Email </th>
-            <th> CountDown date </th>   
-            <th> Alert Expired </th>       
+            <th> CountDown days </th>   
+            <th> Alert Expired </th>    
+            <th> Access Details</th>    
              <th> Date Created </th>
              <th> Action </th>      
         </tr>
@@ -31,14 +36,15 @@
             {
             <tr class="gradeX odd" role="row" id="row-@item.ServId">
 
-                <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                <td>@Html.DisplayFor(modelItem => item.Description)</td>
-                <td>@String.Format("{0:d}", item.ExpiredDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.ServerDescription)</td>
+                <td>@Html.DisplayFor(modelItem => item.Services)</td>
+                <td>@String.Format("{0:d}", item.ExpiringDate)</td>
                 <td>@Html.DisplayFor(modelItem => item.RenewerType)</td>            
                 <td>@Html.DisplayFor(modelItem => item.Email)</td>
                 <td>@Html.DisplayFor(modelItem => item.CountDown)</td>
-
-                <td>@(item.AlertExpired.ToString() == "1" ? "Yes" : "NO")</td>          
+                
+                <td>@(item.AlertExpired.ToString() == "1" ? "Yes" : "NO")</td>   
+                <td>@Html.DisplayFor(modelItem => item.Access_Details)</td>       
                 <td>@String.Format("{0:d}", item.CreatedDate)</td>
           
                     <td>
@@ -46,7 +52,7 @@
                             <i class="fa fa-pencil"></i>    Edit
                         </a>
                         @*<a href="#" class="js-cancel-restaurant" data-restaurant-id="@item.RestId" data-name="@item.RestName">Cancel</a>*@
-                        <a href="#" class="btn btn-danger btn-xs" id="deleteaction" data-id="@item.ServId" data-name="@item.Name">
+                        <a href="#" class="btn btn-danger btn-xs" id="deleteaction" data-id="@item.ServId" data-name="@item.ServerDescription">
                             <i class="fa fa-trash-o "></i> Delete
                         </a>
                     </td>
@@ -58,6 +64,9 @@
 <p>
     @Html.ActionLink("Export to Excel", "Export", "Service", new { @class = "btn btn-primary" })
 </p>
+@*<li>@Html.ActionLink("Upload Services", "UploadServices", "Service")</li>*@
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 
 @section Script{
     <link href="~/Content/toastr.css" rel="stylesheet" />

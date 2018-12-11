@@ -10,6 +10,7 @@ namespace CybSoftServices.Interface
     public interface IUploadManager
     {
         Operation<List<ServiceModel>> UploadServiceNames(Stream stream, ServiceModel model);
+        Operation<List<ServerModel>> UploadServerNames(Stream stream, ServerModel model);
 
     }
 }

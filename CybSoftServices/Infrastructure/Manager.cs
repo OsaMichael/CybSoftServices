@@ -15,7 +15,7 @@ namespace CybSoftServices.Infrastructure
 
             Bind<IServiceManager>().To<ServiceManager>();
             Bind<IUploadManager>().To<UploadManager>();
-            // Bind<IProjectManager>().To<ProjectManager>();
+            Bind<IServerManager>().To<ServerManager>();
 
         }
     }
