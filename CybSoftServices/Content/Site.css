@@ -37,3 +37,37 @@ text{
     vertical-align: top;
     border-top: 1px solid #dddddd;
 }
+
+/*body {
+    background: #d7dce2;
+    background-image: url(../Scontent/68622266-bank-wallpapers.jpg);
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    font-family: 'Source Sans Pro', 'sans-serif';
+    font-size: 1.1em;
+    color: #545B64;
+    font-weight: 300;
+}
+th, td {
+    padding: 1px 1px;
+}
+body {
+    background: #e2e8ec;
+    background-image: url(../Scontent/68622266-bank-wallpapers.jpg);
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    font-family: 'Source Sans Pro', 'sans-serif';
+    font-size: 1.1em;
+    color: #545B64;
+    font-weight: 300;
+}
+/*th {
+    color: #d2c9c9;
+    background: #141517 none repeat-x scroll left top;
+}*/
+/*th {
+    color: #d2c9c9;
+    background: #46494e none repeat-x scroll left top;
+}*/

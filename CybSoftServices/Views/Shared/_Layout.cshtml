@@ -1,20 +1,91 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - CybSoft Projects</title>
+    @*<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">*@
+    @*<title>@ViewBag.Title - CybSoft Projects</title>*@
     @Styles.Render("~/Content/css")
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>deiform - Free CSS Template by ZyPOP</title>
+    <link rel="stylesheet" href="~/Scontent/reset_m.css" type="text/css" />
+    <link rel="stylesheet" href="~/Scontent/styles_m.css" type="text/css" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    @*<script type="text/javascript" src="~/Scontent/jquery.js"></script>*@
+    <script type="text/javascript" src="~/Scontent/slider.js"></script>
+    <script type="text/javascript" src="~/Scontent/superfish.js"></script>
+    <script type="text/javascript" src="~/Scontent/custom.js"></script>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+    @*@Styles.Render("~/Content/css")*@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 
+   
 </head>
+
+<style>
+        body {
+            background: #d7dce2;
+            background-image: url(../Scontent/68622266-bank-wallpapers.jpg);
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            font-family: 'Source Sans Pro', 'sans-serif';
+            font-size: 1.1em;
+            color: #545B64;
+            font-weight: 300;
+        }
+
+        body {
+            background: #e2e8ec;
+            background-image: url(../Scontent/68622266-bank-wallpapers.jpg);
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            font-family: 'Source Sans Pro', 'sans-serif';
+            font-size: 1.1em;
+            color: #545B64;
+            font-weight: 300;
+        }
+
+        th, td {
+            padding: 1px 1px;
+        }
+
+        /*th {
+        color: #d2c9c9;
+        background: #141517 none repeat-x scroll left top;
+    }*/
+        th {
+            color: #d2c9c9;
+            background: #46494e none repeat-x scroll left top;
+        }
+
+        li {
+            padding-bottom: 0px;
+        }
+
+        element.style {
+            margin: 0px;
+            width: 344px;
+            height: 45px;
+        }
+
+        a {
+            color: #8ab4ea;
+            border-bottom: 1px solid #6B7480;
+            text-decoration: none;
+        }
+</style>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -26,30 +97,60 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Services", "index", "Service")</li>
+                    @*<li>@Html.ActionLink("Servers", "index", "Server")</li>*@
+                    @*<li>@Html.ActionLink("Upload Services", "UploadServices", "Service")</li>
 
-
-                        <li>@Html.ActionLink("Services", "index", "Service")</li>
-                        @*<li>@Html.ActionLink("Servers", "index", "Server")</li>*@
-                    <li>@Html.ActionLink("Upload Services", "UploadServices", "Service")</li>
-      
                 </ul>
                 @Html.Partial("_LoginPartial")
-            </div>
+            </div>*@
 
-        </div>
+        @*</div>
+    </div>*@
+
+    <div id="container" class="width">
+
+        <header>
+            <div>
+                <h1><a href="/">CybSoft Services</a></h1>
+
+                <nav>
+                    <ul class="sf-menu dropdown">
+                        <li>
+                            <a>Services</a>
+                            <ul>
+                                @Html.Partial("_LoginPartial")
+                                <li><a href="~/Service/CreateService">Add Service</a></li>
+                                <li><a href="~/Service/UploadServices">Upload Services</a></li>
+                                @*<li><a href="#">Transfer Balance</a></li>*@
+
+                            </ul>
+                        </li>
+                    </ul>
+
+                </nav>
+
+            </div>
+            <div class="clear"></div>
+
+            </header>
+                @*<div id="body" class="width">
+                    <section id="content" class="two-column with-right-sidebar">
+                        <article>*@
+
+            @RenderBody()
+            @RenderSection("Script", false)
+
     </div>
 
-
     <div class="container body-content">
-        @RenderBody()
+        @*@RenderBody()*@
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year </p>
         </footer>
     </div>
-
-
-    @RenderSection("Script", false)
+    @*@RenderSection("Script", false)*@
     <script>
         $(function () {
             //Initiate Page Loader
@@ -71,9 +172,38 @@
         });
 
     </script>
-
 </body>
 </html>
+
+
+
+
+
+@*@RenderSection("Script", false)*@
+@*<script>
+        $(function () {
+            //Initiate Page Loader
+            $("html").removeClass("loading");
+
+
+            ///Application Successful
+            var succ = $('#success').val();
+            if (succ !== "" && succ !== null && succ !== undefined) {
+                toastr.success(succ);
+            }
+
+            ///Registration Error
+            var err = $('#error').val();
+            if (err !== "" && err !== null && err !== undefined) {
+                toastr.error(err);
+            }
+
+        });
+
+    </script>*@
+
+@*</body>
+    </html>*@
 
 
 @*<div class="col-sm-3 col-md-3 pull-right">
@@ -97,48 +227,48 @@
 
 
 @*<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-   
-   
-     @Scripts.Render("~/bundles/modernizr")
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
 
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+
+         @Scripts.Render("~/bundles/modernizr")
+
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
-</html>*@
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+    </html>*@

@@ -62,3 +62,5 @@ C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftSe
 C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices.Test\obj\Debug\CybSoftServices.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices.Test\obj\Debug\CybSoftServices.Test.dll
 C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices.Test\obj\Debug\CybSoftServices.Test.pdb
+C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices.Test\bin\Debug\PagedList.dll
+C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices.Test\bin\Debug\PagedList.xml

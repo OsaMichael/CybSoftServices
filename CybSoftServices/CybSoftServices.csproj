@@ -460,6 +460,22 @@
     <Content Include="Images\6.jpg" />
     <Content Include="Images\7.jpg" />
     <Content Include="Images\8.jpg" />
+    <Content Include="Scontent\12.jpg" />
+    <Content Include="Scontent\6.jpg" />
+    <Content Include="Scontent\7.jpg" />
+    <Content Include="Scontent\8.jpg" />
+    <Content Include="Scontent\custom.js" />
+    <Content Include="Scontent\jquery.js" />
+    <Content Include="Scontent\reset.css" />
+    <Content Include="Scontent\reset_m.css" />
+    <Content Include="Scontent\slider.js" />
+    <Content Include="Scontent\styles.css" />
+    <Content Include="Scontent\styles_LoanOfficer.css" />
+    <Content Include="Scontent\styles_m.css" />
+    <Content Include="Scontent\styles_ma.css" />
+    <Content Include="Scontent\styles_main.css" />
+    <Content Include="Scontent\styles_o.css" />
+    <Content Include="Scontent\superfish.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -691,6 +707,7 @@
     <Content Include="Views\Server\EditServer.cshtml" />
     <Content Include="Views\Server\UploadServers.cshtml" />
     <Content Include="Views\DataUpload\ServerNames.cshtml" />
+    <Content Include="Views\Shared\_mainlayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
