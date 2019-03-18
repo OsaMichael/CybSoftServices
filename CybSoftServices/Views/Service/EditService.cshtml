@@ -2,7 +2,7 @@
 @model CybSoftServices.Models.ServiceModel
 
 @{
-    ViewBag.Title = "EditService";
+    ViewBag.Title = "Edit Service";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @*<h1 class="alert-info">EDIT Services</h1>*@
@@ -18,7 +18,7 @@
                     Server Description
                 </label>
 
-                <div class="col-md-12">
+                <div class="col-md-8">
                     @*@Html.TextBoxFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "enter new item" } })*@
                     @Html.TextAreaFor(model => model.ServerDescription, new { @class = "form-control", @placeholder = "enter new item" })
 
@@ -33,8 +33,9 @@
                     Services
                     @*<span class="required" aria-required="true"> * </span>*@
                 </label>
-                <div class="col-md-12">
-                    @Html.TextAreaFor(model => model.Services, new { htmlAttributes = new { @class = "form-control" } })
+                <div class="col-md-8">
+                    @*@Html.TextAreaFor(model => model.Services, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.TextAreaFor(model => model.Services, new { @class = "form-control", @placeholder = "enter notification email" })
                     @Html.ValidationMessageFor(m => m.Services, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -43,7 +44,7 @@
                     Expire Date
                     @*<span class="required" aria-required="true"> * </span>*@
                 </label>
-                <div class="col-md-12">
+                <div class="col-md-8">
                     @*<input type="date" name="ExpiredDate" class="form-control" value="mm/dd/yyyy" />*@
                     @Html.TextBoxFor(model => model.ExpiringDate, new { @class = "form-control", @placeholder = "enter new " })
                     @*@Html.@String.Format("{0:d}", model.ExpiredDate)*@
@@ -56,22 +57,36 @@
                     Renewer Type
                     @*<span class="required" aria-required="true"> * </span>*@
                 </label>
-                <div class="col-md-12">
-                    <div class="col-md-12">
-                        @*<input type="date" name="ExpiredDate" class="form-control" value="mm/dd/yyyy" />*@
-                        @Html.TextBoxFor(model => model.RenewerType, new { @class = "form-control", @placeholder = "enter new item" })
-                 
-                        @Html.ValidationMessageFor(m => m.RenewerType, "", new { @class = "text-danger" })
-                    </div>
+                <div class="col-md-8">
+                    <select id="renewerType" name="renewerType" class="form-control">
+                        <option value="">Select</option>
+                        <option value="Yearly">Yearly</option>
+                        <option value="Monthly">Monthly</option>
+                        <option value="Weekly">Weekly</option>
+                    </select>
                 </div>
             </div>
+            @*<div class="form-group row">
+                <label class="control-label col-md-3">
+                    Renewer Type*@
+                    @*<span class="required" aria-required="true"> * </span>*@
+                @*</label>*@
+                @*<div class="col-md-8">*@
+                    @*<div class="col-md-8">*@
+                        @*<input type="date" name="ExpiredDate" class="form-control" value="mm/dd/yyyy" />*@
+                        @*@Html.TextBoxFor(model => model.RenewerType, new { @class = "form-control", @placeholder = "enter new item" })
+                 
+                        @Html.ValidationMessageFor(m => m.RenewerType, "", new { @class = "text-danger" })
+                    </div>*@
+                @*</div>*@
+            @*</div>*@
  
             <div class="form-group row">
                 <label class="control-label col-md-3">
                     Email
                     @*<span class="required" aria-required="true"> * </span>*@
                 </label>
-                <div class="col-md-12">
+                <div class="col-md-8">
                     @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "enter notification email" })
                     @*@Html.TextBoxFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })*@
                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
@@ -82,7 +97,7 @@
                     CountDown date
                 </label>
 
-                <div class="col-md-12">
+                <div class="col-md-8">
                     @*<input type="number" name="Duration" class="form-control" placeholder="enter expiring date (e.g 3)"  />*@
                     @Html.TextBoxFor(model => model.CountDown, new { @class = "form-control", @placeholder = "enter new item" })
                     @Html.ValidationMessageFor(m => m.CountDown, "", new { @class = "text-danger" })
@@ -94,7 +109,7 @@
                     Alert Expired
                     @*<span class="required" aria-required="true"> * </span>*@
                 </label>
-                <div class="col-md-12">
+                <div class="col-md-8">
                     @Html.TextBoxFor(model => model.AlertExpired, new { @class = "form-control", @placeholder = "enter new item" })
                     @Html.ValidationMessageFor(m => m.AlertExpired, "", new { @class = "text-danger" })
 
@@ -105,8 +120,8 @@
                     Access Details
                     @*<span class="required" aria-required="true"> * </span>*@
                 </label>
-                <div class="col-md-12">
-                    @Html.TextBoxFor(model => model.Access_Details, new { @class = "form-control", @placeholder = "enter notification email" })
+                <div class="col-md-8">
+                    @Html.TextAreaFor(model => model.Access_Details, new { @class = "form-control", @placeholder = "enter notification email" })
                     @*@Html.TextBoxFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })*@
                     @Html.ValidationMessageFor(m => m.Access_Details, "", new { @class = "text-danger" })
                 </div>

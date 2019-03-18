@@ -218,8 +218,8 @@ C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftSe
 C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\obj\Debug\CybSoftServices.csproj.GenerateResource.Cache
 C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\obj\Debug\CybSoftServices.dll
 C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\obj\Debug\CybSoftServices.pdb
-C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\obj\Debug\CybSoftServices.csprojResolveAssemblyReference.cache
 C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\bin\PagedList.dll
 C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\bin\PagedList.Mvc.dll
 C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\bin\PagedList.xml
 C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\bin\PagedList.Mvc.xml
+C:\Users\Michael\Documents\Visual Studio 2015\Projects\CybSoftServices\CybSoftServices\obj\Debug\CybSoftServices.csprojResolveAssemblyReference.cache

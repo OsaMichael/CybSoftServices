@@ -1,7 +1,7 @@
 ﻿@model CybSoftServices.Models.ServiceModel
 
 @{
-    ViewBag.Title = "CreateService";
+    ViewBag.Title = "Create Service";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -18,10 +18,10 @@
                     Server Description
                 </label>
 
-                <div class="col-md-12">
+                <div class="col-md-8">
                     @*@Html.TextBoxFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "enter new item" } })*@
                     @Html.TextAreaFor(model => model.ServerDescription,  new { @class = "form-control", @placeholder = "" } )
-   
+                    
                     @Html.ValidationMessageFor(m => m.ServerDescription, "", new { @class = "text-danger" })
                     @*@Html.TextBox("CustomarName", null, new { @class = "form-control", @placeholder = "Search With Customar Name" })*@
                     @*@Html.TextBoxFor(m => m.Listing.Location.AddressLine1, new { @placeholder = "Address Line 1 - Required" })*@
@@ -35,8 +35,8 @@
                         Services
                         @*<span class="required" aria-required="true"> * </span>*@
                     </label>
-                    <div class="col-md-12">
-                        @Html.TextAreaFor(model => model.Services, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-8">
+                        @Html.TextAreaFor(model => model.Services,  new { @class = "form-control", @placeholder = "" } )
                         @Html.ValidationMessageFor(m => m.Services, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                         Expire Date
                         @*<span class="required" aria-required="true"> * </span>*@
                     </label>
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                         <input type="date" name="ExpiringDate" class="form-control" value="dd/MM/yyyy" />                  
                         @Html.ValidationMessageFor(m => m.ExpiringDate, "", new { @class = "text-danger" })
                     </div>
@@ -56,7 +56,7 @@
                     Renewer Type
                     @*<span class="required" aria-required="true"> * </span>*@
                 </label>
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <select id="renewerType" name="renewerType"  class="form-control">
                         <option value="">Select</option>
                         <option value="Yearly">Yearly</option>
@@ -71,7 +71,7 @@
                         Email
                         @*<span class="required" aria-required="true"> * </span>*@
                     </label>
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                         <input name="Email" type="text" class="form-control" placeholder="enter notification email"/>
                         @*@Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "enter notification email" })*@
                         @*@Html.TextBoxFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })*@
@@ -83,7 +83,7 @@
                    CountDown Date 
                 </label>
 
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <input type="number" name="CountDown" class="form-control"  placeholder="enter expiring date (e.g 3)"} />
                     @Html.ValidationMessageFor(m => m.CountDown, "", new { @class = "text-danger" })
                 
@@ -94,7 +94,7 @@
                         Alert Expired
                         @*<span class="required" aria-required="true"> * </span>*@
                     </label>
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                         <select id="alertExpired" name="AlertExpired"  class="form-control">
                             <option value="">Select</option>
                             <option value="1">Yes</option>
@@ -107,7 +107,7 @@
                     Access Details
                 </label>
 
-                <div class="col-md-12">
+                <div class="col-md-8">
                     @*@Html.TextBoxFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "enter new item" } })*@
                     @Html.TextBoxFor(model => model.Access_Details, new { @class = "form-control", @placeholder = "enter new item" })
 

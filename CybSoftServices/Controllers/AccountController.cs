@@ -112,7 +112,7 @@ namespace CybSoftServices.Controllers
 
                     //if (role == "Admin")
                     //{
-                    //return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Service");
                     //}
 
                     return RedirectToLocal(returnUrl);
@@ -422,18 +422,28 @@ namespace CybSoftServices.Controllers
         }
 
         //
-        // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
+        public ActionResult LogOut()
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            _auth.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             Session.Clear();
             Session.Abandon();
             Session.RemoveAll();
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("index", "Home", new { Area = "" });
         }
+
+        //// POST: /Account/LogOff
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult LogOff()
+        //{
+        //    AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+        //    Session.Clear();
+        //    Session.Abandon();
+        //    Session.RemoveAll();
+        //    FormsAuthentication.SignOut();
+        //    return RedirectToAction("Index", "Home");
+        //}
 
         //
         // GET: /Account/ExternalLoginFailure

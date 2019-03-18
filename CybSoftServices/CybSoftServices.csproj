@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -460,6 +461,7 @@
     <Content Include="Images\6.jpg" />
     <Content Include="Images\7.jpg" />
     <Content Include="Images\8.jpg" />
+    <Content Include="Images\Cyberspace.png" />
     <Content Include="Scontent\12.jpg" />
     <Content Include="Scontent\6.jpg" />
     <Content Include="Scontent\7.jpg" />
@@ -663,7 +665,9 @@
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Home\6.jpg" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -708,9 +712,33 @@
     <Content Include="Views\Server\UploadServers.cshtml" />
     <Content Include="Views\DataUpload\ServerNames.cshtml" />
     <Content Include="Views\Shared\_mainlayout.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Sidebar.cshtml" />
+    <Content Include="Views\Shared\_TempStartUpLayout.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AdminLTE\App_Data\" />
+    <Folder Include="AdminLTE\bootstrap\" />
+    <Folder Include="AdminLTE\dist\" />
+    <Folder Include="AdminLTE\documentation\" />
+    <Folder Include="AdminLTE\plugins\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Content\admintemplate\assets\" />
+    <Folder Include="Content\admintemplate\css\" />
+    <Folder Include="Content\admintemplate\fonts\" />
+    <Folder Include="Content\admintemplate\js\" />
+    <Folder Include="Content\admintemplate\tempstartuplayout\" />
+    <Folder Include="Scripts\Elements\" />
+    <Folder Include="Scripts\Examples\" />
+    <Folder Include="Scripts\Forms\" />
+    <Folder Include="Scripts\Gnostice\" />
+    <Folder Include="Scripts\Home\" />
+    <Folder Include="Scripts\Mailbox\" />
+    <Folder Include="Scripts\Shared\" />
+    <Folder Include="Scripts\Tables\" />
+    <Folder Include="Scripts\Widgets\" />
+    <Folder Include="Styles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

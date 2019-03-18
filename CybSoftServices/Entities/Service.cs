@@ -28,3 +28,6 @@ namespace CybSoftServices.Entities
         public DateTime ModifiedDate { get; set; } = DateTime.Now;
     }
 }
+
+
+

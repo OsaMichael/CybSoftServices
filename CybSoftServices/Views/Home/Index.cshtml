@@ -1,22 +1,191 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+
+    Layout = "~/Views/Shared/_TempStartUpLayout.cshtml";
 }
+
+<style>
+    .btn {
+        padding: .84rem 2.14rem;
+        /*font-size: 1.45rem;*/
+        -webkit-transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+        margin: .375rem;
+        border: 0;
+        -webkit-border-radius: .125rem;
+        border-radius: .125rem;
+        cursor: pointer;
+        text-transform: uppercase;
+        white-space: normal;
+        word-wrap: break-word;
+    }
+
+    .additional-features i {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        color: #ffffff;
+        font-size: 20px;
+        text-align: center;
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -o-border-radius: 50%;
+        -ms-border-radius: 50%;
+    }
+</style>
+<section id="additional">
+    <div class="additional-section">
+        <div class="bg-overlay pattern"></div>
+        <div class="container additional-inner">
+            <!-- Title & Desc Row Begins -->
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <!-- Title -->
+                    <div class="title">
+                        <h2> CYBSOFT  <span>SERVICES</span></h2>
+                    </div>
+
+
+
+                    @*<p>
+                            <a  class="intro-banner-vdo-play-btn pinkBg col-md-5 pull-left" >
+                                    <i class="glyphicon glyphicon-play whiteText" aria-hidden="true"></i>
+                                  <span class="ripple pinkBg"></span>
+                                  <span class="ripple pinkBg"></span>
+                                  <span class="ripple pinkBg"></span>
+                            </a>
+                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#centralModalSuccess"><i class="fa fa-info"></i> APPLICANTS frequently asked questions</a>
+                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#centralModalSuccess1"><i class="fa fa-info"></i> STUDENTS frequently asked questions</a>
+                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#centralModalSuccess2"><i class="fa fa-info"></i> PAYMENT frequently asked questions</a>
+                        </p>*@
+                    <!-- Description -->
+                    @*<p class="desc white">Please click on any of the link applicable to you above .</p>*@
+                </div>
+            </div>
+            <!-- Title & Desc Row Ends -->
+            <!-- Additional features Begins -->
+            <div class="row features-border-top">
+                <div class="col-md-4">
+                    <div @*class="additional-features animated" data-animation="fadeInLeft" data-animation-delay="300"*@>
+                        <!-- Icon -->
+                        @*<i class="fa fa-user" style="font-size:40px !important; width: 80px; height: 80px;*@
+                        @*line-height: 80px;
+                            color: #ffffff;
+                            text-align: center;"></i>*@
+                        <!-- Content -->
+                        @*<div class="additional-content">
+                                <h5>Propective Students</h5>
+                                <p><a href="@Url.Action("SignUp","ApplicantAccount", new { Area ="Applicant"})" class="btn btn-primary"><i class="fa fa-plus"></i> New Applicants</a></p>
+                                <p><a href="@Url.Action("Login","ApplicantAccount", new { Area ="Applicant"})" class="btn btn-success"><i class="fa fa-user"></i> Returning Applicants</a></p>
+                            </div>*@
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="additional-features animated" data-animation="fadeInUp" data-animation-delay="200">                   
+                        <div class="additional-content">                           
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="additional-features animated" data-animation="fadeInRight" data-animation-delay="300">
+                        <!-- Icon -->
+                        <i class="fa fa-user" style="font-size:40px !important; width: 80px; height: 80px;
+    line-height: 80px;
+    color: #ffffff;
+    text-align: center;"></i>
+                        <!-- Content -->
+                        <div class="additional-content">
+                            <h5>Administrator</h5>
+                            <p><a href="@Url.Action("Login","Account", new { area = ""})" class="btn btn-success"><i class="fa fa-send"></i> Login</a></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div><br /><br /><br /><br /><br /><br /><br /><br />
+            <div class="col-md-12 text-center">
+                <p>
+                    <a class="intro-banner-vdo-play-btn pinkBg col-md-5 pull-left">
+                        <i class="glyphicon glyphicon-play whiteText" aria-hidden="true"></i>
+                        <span class="ripple pinkBg"></span>
+                        <span class="ripple pinkBg"></span>
+                        <span class="ripple pinkBg"></span>
+                    </a>                   
+                </p>
+                <br /><br />
+                <p></p>
+            </div>
+            <!-- Additional features Row Ends -->
+        </div>
+    </div>
+</section>
+
+
+
+<style>
+    .faqHeader {
+        font-size: 23px;
+        margin: 5px;
+    }
+
+    .panel-heading [data-toggle="collapse"]:after {
+        font-family: 'Glyphicons Halflings';
+        content: "\e072"; /* "play" icon */
+        float: right;
+        color: #F58723;
+        font-size: 18px;
+        line-height: 22px;
+        /* rotate "play" icon from > (right arrow) to down arrow */
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+    }
+
+    .panel-heading [data-toggle="collapse"].collapsed:after {
+        /* rotate "play" icon from > (right arrow) to ^ (up arrow) */
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
+        color: #454444;
+    }
+</style>
+<!-- FAQ - END -->
+    @*</div>*@
+<!--/.Content-->
+@*</div>*@
+
+
+
+
+
+
+
+
+
+
+@*@{
+    ViewBag.Title = "Home Page";
+}*@
 
 @*<td>
         <img style="width: 148%"  src="~/images/6.jpg"/>
     </td>*@
 
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+@*<div id="myCarousel" class="carousel slide" data-ride="carousel">
 
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>*@
         @*<li data-target="#myCarou**@
-        <li data-target="#myCarousel" datsel" data-slide-to="2"></li>a-slide-to="3"></li>
+        @*<li data-target="#myCarousel" datsel" data-slide-to="2"></li>a-slide-to="3"></li>
     </ol>
     <h1></h1>
-    <!-- Wrapper for slides -->
+     Wrapper for slides 
     <div class="carousel-inner" role="listbox">
         <div class="item active">
             <img src="~/Images/8.jpg" alt="Chania" width="2000" height="150">
@@ -53,10 +222,10 @@
                 <p></p>
             </div>
         </div>
-    </div>
+    </div>*@
 
     <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    @*<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
     </a>
@@ -64,16 +233,16 @@
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
-</div>
+</div>*@
 
-@section Script{
+@*@section Script{
     <link href="~/Content/toastr.css" rel="stylesheet" />
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery-3.0.0.js"></script>
     <script src="~/Scripts/toastr.js"></script>
     <script src="~/Scripts/angular.js"></script>
     <script type="text/javascript">toastr.success("@(TempData["Message"] as string)");</script>
-}
+}*@
 
 
 
